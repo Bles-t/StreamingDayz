@@ -1,5 +1,7 @@
 
 import { UserButton } from "@clerk/nextjs"
+import { SignInButton } from "@clerk/nextjs"
+
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
     <UserButton 
     afterSignOutUrl="/"
     />
+
+    <SignInButton></SignInButton>
   </div>
   
 
