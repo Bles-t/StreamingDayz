@@ -10,13 +10,21 @@ import { Button } from "@/components/ui/button";
 export const Search = () => {
 
     console.log("I am logged here");
+    const router = useRouter();
+    const [value, setValue] = useState("");
 
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    }
 
     return (
         <form
             onSubmit={() => { }}
             className="relative w-full lg:w-[400px] flex items-center"  >
-            <Input placeholder="Search" />
+            <Input
+                placeholder="Search"
+                className="rounded-r-none   focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0" />
+
             <Button
                 type="submit"
                 size="sm"
