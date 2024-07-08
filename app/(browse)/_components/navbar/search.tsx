@@ -13,17 +13,33 @@ export const Search = () => {
     const router = useRouter();
     const [value, setValue] = useState("");
 
+
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-    }
+
+        if (!value) return;
+
+
+        const query = qs.stringify({ term: value }, { skipEmptyString: true });
+        const url = `/?${query}`;
+        // localhost:3000?term=vaule. vaule is what the user is pushing to the url 
+        router.push(url);
+
+    };
+    console.log(value, "hi");
+
 
     return (
         <form
-            onSubmit={() => { }}
+            onSubmit={onSubmit}
             className="relative w-full lg:w-[400px] flex items-center"  >
             <Input
+
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
                 placeholder="Search"
                 className="rounded-r-none   focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0" />
+
 
             <Button
                 type="submit"
