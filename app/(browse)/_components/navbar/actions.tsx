@@ -15,8 +15,8 @@ export const Actions = async () => {
             Actions!
             {!user && (
                 <SignInButton>
-                    <Button>
-                        login
+                    <Button size="sm" variant="primary" >
+                        Login
                     </Button>
                 </SignInButton>
             )}
