@@ -20,18 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider appearance={{baseTheme:dark}} >
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-        attribute="class"
-        forcedTheme="dark"
-        storageKey="streamingdayz-theme"
-        >
-        {children}
-        </ThemeProvider>
+    <ClerkProvider appearance={{ baseTheme: dark }} >
+      <html lang="en">
+        <body className={inter.className}>
+          <ThemeProvider
+            attribute="class"
+            forcedTheme="dark"
+            storageKey="streamingdayz-theme `1"
+          >
+            {children}
+          </ThemeProvider>
         </body>
-    </html>
+      </html>
     </ClerkProvider>
   );
 }
