@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeftFromLineIcon } from "lucide-react";
 
 
-
 export const Toggle = () => {
 
     const {
@@ -33,5 +32,5 @@ export const Toggle = () => {
                 </div >
             )}
         </>
-    )
-}
+    );
+};
