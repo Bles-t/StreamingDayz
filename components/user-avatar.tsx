@@ -46,11 +46,22 @@ export const UserAvatar = ({
         <div className="realtive">
             <Avatar
                 className={cn(
-                    isLive && "ring-2 ring-green-500 border border-background"
+                    isLive && "ring-2 ring-green-500 border border-background",
+                    avatarSizes({ size })
                 )}
             >
                 <AvatarImage src={imageUrl} className="object-cover" />
+                <AvatarFallback>
+                    {username[0]}
+                    {username[username.length - 1]}
+                </AvatarFallback>
             </Avatar>
+            {canShowBadge && (
+                <div className="absoulute -bottom-3 left-1/2 transform-translate-x-1/2">
+
+                </div>
+
+            )}
         </div>
 
     );
