@@ -9,8 +9,11 @@ export const LiveBadge = ({
     className,
 }: LiveBadgeProps) => {
     return (
-        <div>
-
+        <div className={cn(
+            "bg-green-500 text-center p-0.5 px1.5 rounded-md uppercase text-[10px] border border-background font-semibold tracking-wide ",
+            className
+        )} >
+            Live
         </div>
     )
 }

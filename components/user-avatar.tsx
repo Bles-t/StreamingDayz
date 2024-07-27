@@ -8,6 +8,7 @@ import {
     AvatarFallback,
     AvatarImage,
 } from "@/components/ui/avatar";
+import { LiveBadge } from "./live-badge";
 
 const avatarSizes = cva(
     "",
@@ -58,11 +59,25 @@ export const UserAvatar = ({
             </Avatar>
             {canShowBadge && (
                 <div className="absoulute -bottom-3 left-1/2 transform-translate-x-1/2">
-
+                    <LiveBadge />
                 </div>
 
             )}
         </div>
 
+    );
+};
+
+interface UserAvatarSkeletonProps
+    extends VariantProps<typeof avatarSizes> { };
+
+export const UserAvatarSkeleton = ({
+    size,
+}: UserAvatarProps) => {
+    return (
+        <Skeleton className={cn(
+            "rounded-full",
+            avatarSizes({ size }),
+        )} />
     );
 };
