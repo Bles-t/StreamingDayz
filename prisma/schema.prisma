@@ -22,4 +22,16 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Follow    Follow[]
+  Follow    Follow[]
+}
+
+model Follow {
+  id         String @id @default(uuid())
+  followerId String
+  follwingId String
+
+  follower User    @relation(name: "Following", fields: [followerId], references: [id], onDelete: Cascade)
+  User     User?   @relation(fields: [userId], references: [id])
+  userId   String?
 }
