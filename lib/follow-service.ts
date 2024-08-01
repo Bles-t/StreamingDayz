@@ -19,11 +19,34 @@ export const isFollowingUser = async (id: string) => {
         const existingFollow = await db.follow.findFirst({
             where: {
                 followerId: self.id,
-                : otherUser.id,
+                follwingId: otherUser.id,
             },
         })
-
+        return !!existingFollow
     } catch {
-    return false;
+        return false;
+    }
+};
+
+export const followUser = async (id: string) => {
+    const self = await getSelf();
+
+    const otherUser = await db.user.findUnique({
+        where: { id },
+    });
+
+    if (!otherUser) {
+        throw new Error("User not found");
+    }
+    if (otherUser.id === self.id) {
+        throw new Error("Cannot follow yourself");
+    }
+
+    const existingFollow = await db.follow.findFirst({
+        where: {
+            followerId: self.id,
+            followingId: otherUser.id,
+        },
+    });
+
 }
-} 
