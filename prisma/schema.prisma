@@ -20,29 +20,25 @@ model User {
   externalUserId String  @unique
   bio            String? @db.String()
 
-  following  Follow[] @relation("Following")
-  followedBy Follow[] @relation("FollwedBy")
+  following  Follow[] @relation("UserFollowing")
+  followedBy Follow[] @relation("UserFollowedBy")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Follow    Follow[]
 }
 
 model Follow {
-  id         String @id @default(uuid())
-  followerId String
-  follwingId String
+  id          String @id @default(uuid())
+  followerId  String
+  followingId String
 
-  follower  User @relation(name: "Following", fields: [followerId], references: [id], onDelete: Cascade)
-  following User @relation(name: "FollowedBy", fields: [follwingId], references: [id], onDelete: Cascade)
+  follower  User @relation(name: "UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation(name: "UserFollowedBy", fields: [followingId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
-
-  @@unique([followerId, follwingId])
+  @@unique([followerId, followingId])
   @@index([followerId])
-  @@index([follwingId])
+  @@index([followingId])
 }
