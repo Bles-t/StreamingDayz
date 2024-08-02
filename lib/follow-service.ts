@@ -45,8 +45,23 @@ export const followUser = async (id: string) => {
     const existingFollow = await db.follow.findFirst({
         where: {
             followerId: self.id,
-            followingId: otherUser.id,
+            follwingId: otherUser.id,
         },
     });
 
+    if (existingFollow) {
+        throw new Error("Already Following")
+    }
+    const follow = await db.follow.create({
+        data: {
+            followerId: self.id,
+            follwingId: otherUser.id,
+        },
+        include: {
+            following: true,
+            follower: true,
+        },
+
+    });
+    return follow
 }
