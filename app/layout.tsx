@@ -6,6 +6,9 @@ import {
 } from '@clerk/nextjs'
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from 'sonner';
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +31,7 @@ export default function RootLayout({
             forcedTheme="dark"
             storageKey="streamingdayz-theme `1"
           >
+            <Toaster theme="light" position="bottom-center" />
             {children}
           </ThemeProvider>
         </body>
